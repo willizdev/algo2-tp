@@ -1,0 +1,14 @@
+\begin{proc}{entregar}{\Inout e: \Tipo{EdR}, \In estudiante: \Z}{}
+\requiere{\\
+\tab estudiante\ en\ claves(e.estudiantes) \yLuego\\
+\tab e.estudiantes[estudiante].entregado = False\\
+}
+\requiere{ E0 = e }
+\asegura{ e.estudiantes[estudiante].entregado = True }
+\asegura{\\
+\tab e.estudiantes = setKey\big(E0.estudiantes,\ estudiante,\\
+\tab  \langle examen:\ E0.estudiantes[estudiante].examen,\ entregado:\ True\rangle\big)\\
+}
+\asegura{ igualAula(e.aula,\ E0.aula) }
+\asegura{ igualSolucion(e.solucion,\ E0.solucion) }
+\end{proc}\\

@@ -1,0 +1,14 @@
+\begin{proc}{consultarDarkWeb}{\Inout e: \Tipo{EdR}, \In solucion: \seq{\Z}, \In n: \Z}{}
+\requiere{ |solucion| = |e.solucion| \yLuego \paraTodo{k}{\Z}{0 \le k < |solucion| \implicaLuego 0 \le solucion[k] < 10} }
+\requiere{ n \ge 0 }
+\requiere{ E0 = e }
+\asegura{ igualAula(e.aula, E0.aula) }
+\asegura{ igualSolucion(e.solucion, E0.solucion) }
+\asegura{\\
+\tab \paraTodo{k}{\Z}{k\ en\ claves(E0.estudiantes) \sii\ k\ en\ claves(e.estudiantes)} \yLuego\\
+\tab \paraTodo{k}{\Z}{(k\ en\ claves(e.estudiantes) \yLuego \neg\ igualExamen(solucion,\ e.estudiantes[k].examen))\\
+\tab \implicaLuego\ igualExamen(e.estudiantes[k].examen,\ E0.estudiantes[k].examen)} \yLuego\\
+\tab \sum_{k=0}^{|claves(E0.estudiantes)|}\mathrm{IfThenElseFi}\big(\,igualExamen(solucion,\\
+\tab e.estudiantes[claves(E0.estudiantes)[k]].examen), 1,\ 0\,\big)\ \le\ n\\
+}
+\end{proc}\\

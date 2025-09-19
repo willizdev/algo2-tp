@@ -1,0 +1,8 @@
+\begin{proc}{igualdad}{\In e1: \Tipo{EdR}, \In e2: \Tipo{EdR}}{\bool}
+\requiere{ True }
+\asegura{ res = True \sii\\
+\tab igualAula(e1.aula, e2.aula) \land\\
+\tab igualSolucion(e1.solucion, e2.solucion) \land\\
+\tab igualEstudiantes(e1.estudiantes, e2.estudiantes)\\
+}
+\end{proc}\\

@@ -1,0 +1,13 @@
+\begin{proc}{copiarse}{
+\Inout e: \Tipo{EdR}, \In estudiante: \Z
+}{}
+\requiere{ E0 = e }
+\requiere{ estudiante \in claves(e.estudiantes) \land e.estudiantes[estudiante].entregado = False }
+\requiere{ sePuedeCopiar(e, estudiante) }
+\asegura{\existe {i}{\Z} {0 \le i < |e.estudiantes[estudiante].examen| \implicaLuego \\
+\tab E0.estudiantes[estudiante].examen[i] = -1 \land\\
+\tab \existe {copiado}{\Z} {copiado \in claves(e.estudiante) \yLuego enRango(e, estudiante, copiado) \land \\ 
+\tab e.estudiantes[copiado].examen[i] \ne -1 \land \\
+\tab e.estudiantes[estudiante].examen[i] = e.estudiantes[copiado].examen[i]}}
+}
+\end{proc}

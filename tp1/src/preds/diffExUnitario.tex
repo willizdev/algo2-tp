@@ -1,0 +1,6 @@
+\pred{diffExUnitario}{x1: Examen, x2: Examen}{\\
+\tab |x1| = |x2| \yLuego\\
+\tab \paraTodo{i}{\Z}{(0 \le i < |x1| \yLuego x1[i] \ne -1) \implica x2[i] = x1[i]} \land\\
+\tab \sum_{i=0}^{|x2|} \mathrm{IfThenElseFi}(x2[i] == -1, 1, 0) =
+\sum_{i=0}^{|x1|} \mathrm{IfThenElseFi}(x1[i] == -1, 1, 0) - 1
+\\}\\

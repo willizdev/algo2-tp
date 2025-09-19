@@ -186,9 +186,9 @@
 
 % ----- Codigo para manejo de errores --------------------------------------
 
-\def\se{\let\ifsetuperror\iftrue}
+\def\se{\let\ifsetuperror\ifTrue}
 \def\ifsetuperror{%
-    \let\ifsetuperror\iffalse
+    \let\ifsetuperror\ifFalse
     \ifx\Materia\relax\se\errhelp={Te olvidaste de proveer una \materia{}.}\fi
     \ifx\Titulo\relax\se\errhelp={Te olvidaste de proveer un \titulo{}.}\fi
     \edef\mlist{\the\intlist}\ifx\mlist\empty\se%
@@ -325,14 +325,14 @@
 %
 \DeclareOption{intVert}{\renewcommand{\tablaIntegrantes}{\tablaIntegrantesVertical}}
 \DeclareOption{intHoriz}{\renewcommand{\tablaIntegrantes}{\tablaIntegrantesHorizontal}}
-\DeclareOption{conLU}{\setboolean{showLU}{true}}
-\DeclareOption{sinLU}{\setboolean{showLU}{false}}
-\DeclareOption{conEntregas}{\setboolean{showEntregas}{true}}
-\DeclareOption{sinEntregas}{\setboolean{showEntregas}{false}}
-\DeclareOption{showDirectores}{\setboolean{showDirectores}{true}}
-\DeclareOption{hideDirectores}{\setboolean{showDirectores}{false}}
-\DeclareOption{showCoDirectores}{\setboolean{showCoDirectores}{true}}
-\DeclareOption{hideCoDirectores}{\setboolean{showCoDirectores}{false}}
+\DeclareOption{conLU}{\setboolean{showLU}{True}}
+\DeclareOption{sinLU}{\setboolean{showLU}{False}}
+\DeclareOption{conEntregas}{\setboolean{showEntregas}{True}}
+\DeclareOption{sinEntregas}{\setboolean{showEntregas}{False}}
+\DeclareOption{showDirectores}{\setboolean{showDirectores}{True}}
+\DeclareOption{hideDirectores}{\setboolean{showDirectores}{False}}
+\DeclareOption{showCoDirectores}{\setboolean{showCoDirectores}{True}}
+\DeclareOption{hideCoDirectores}{\setboolean{showCoDirectores}{False}}
 %
 % Opciones predeterminadas
 %

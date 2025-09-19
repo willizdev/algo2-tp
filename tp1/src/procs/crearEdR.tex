@@ -1,0 +1,30 @@
+\begin{proc}{crearEdR}{\In dimensiones: \Z, \In solucion: \seq{\Z}, \In estudiantes: \Z}{\Tipo{EdR}}
+\requiere{ dimensiones > 0 }
+\requiere{ |solucion| > 0 \land \paraTodo{i}{\Z}{0 \leq i < |solucion| \implicaLuego 0 \leq solucion[i] < 10} }
+\requiere{ 0 < estudiantes \le maxEstudiantes(dimensiones) }
+\asegura{ res.solucion = solucion }
+\asegura{ |claves(res.estudiantes)| \le estudiantes }
+\asegura{\\
+\tab |res.aula| = dimensiones \land\\
+\tab \paraTodo{i}{\Z}{0 \le i < |res.aula| \implicaLuego |res.aula[i]| = dimensiones}\\
+}
+\asegura{\\
+\tab \paraTodo{i, j}{\Z}{0 \le i, j < |res.aula| \implicaLuego (\\
+\tab\tab res.aula[i][j] \ge 0 \land (\\
+\tab\tab res.aula[i][j] > 0 \implica (\\
+\tab\tab\tab res.aula[i][j] \in claves(res.estudiantes) \land\\
+\tab\tab\tab (j + 1 < |res.aula| \implicaLuego res.aula[i][j + 1] = 0) \land\\
+\tab\tab\tab \neg \existe{m,n}{\Z}{0 \le m,n < |res.aula| \land m \ne i \land n \ne j \land res.aula[i][j] = res.aula[m][n]}\\
+\tab\tab))\\
+\tab)}\\
+}
+\asegura{\\
+\tab \paraTodo{k}{\Z}{0 \le k < |claves(res.estudiantes)| \implicaLuego(\\
+\tab\tab claves(res.estudiantes)[k] > 0 \land\\
+\tab\tab \existe{i, j}{\Z}{0 \le i,j < |res.aula| \land res.aula[i][j] = claves(res.estudiantes)[k]} \land\\
+\tab\tab |res.estudiantes[claves(res.estudiantes)[k]].examen| = |solucion| \land\\
+\tab\tab res.estudiantes[claves(res.estudiantes)[k]].entregado = False \land\\
+\tab\tab \paraTodo{i}{\Z}{0 \le i < |solucion| \implicaLuego res.estudiantes[claves(res.estudiantes)[k]].examen[i] = -1}\\
+\tab )}\\
+}
+\end{proc}\\

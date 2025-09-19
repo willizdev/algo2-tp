@@ -1,0 +1,16 @@
+\begin{proc}{corregir}{\In e: \Tipo{EdR}}{\seq{\tupla{\Z,\ \R}}}
+\requiere{\\
+\tab \paraTodo{estudiante}{\Z}{estudiante\ en\ claves(e.estudiantes)\\
+\tab \implicaLuego e.estudiantes[estudiante].entregado = True}\\
+}
+\asegura{\\
+\tab \paraTodo{k}{\Z}{\big(k\ en\ claves(e.estudiantes) \yLuego \neg\ esSospechoso(e,\ k)\big) \implicaLuego\\
+\tab \existe{i}{\Z}{0 \le i < |res| \yLuego res[i].0 = k}}\\
+}
+\asegura{\\
+\tab \paraTodo{i}{\Z}{0 \le i < |res| \implicaLuego \big(res[i].0\ \in claves(e.estudiantes) \yLuego res[i].1 = notaExamen(e.solucion,\ res[i].0)\big)}\\
+}
+\asegura{\\
+\tab \paraTodo{i}{\Z}{0 \le i < |res| \implicaLuego \neg\ \existe{j}{\Z}{0 \le j < |res| \yLuego i \ne j \yLuego res[j] = res[i]}}\\
+}
+\end{proc}

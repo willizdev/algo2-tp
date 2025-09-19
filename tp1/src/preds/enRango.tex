@@ -1,0 +1,7 @@
+\pred{enRango}{e:\Tipo{EdR}, estudiante:\Z, copiado:\Z}{\\
+\tab \existe {i,j}{\Z}{0 \le i < |e.aula| \land 0 \le j < |e.aula| - 2 \land copiado \in claves(e.estudiantes) \yLuego\\
+\tab (e.aula[i][j] = copiado \land e.aula[i][j+2] = estudiante) ||\\
+\tab (e.aula[i][j] = estudiante \land e.aula[i][j+2] = copiado)} ||\\
+\tab \existe {f,c}{\Z}{0 < f < |e.aula| \land 0 \le c < |e.aula| \yLuego \\
+\tab e.aula[f][c] = estudiante \land e.aula[f-1][c] = copiado }
+}

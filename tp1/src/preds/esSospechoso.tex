@@ -1,0 +1,15 @@
+\pred{esSospechoso}{e: \Tipo{EdR}, estudiante: \Z}{\\
+\tab \paraTodo{i, j}{\Z}{0 \le i, j < |e.aula| \yLuego e.aula[i][j] = estudiante \implicaLuego}\\
+\tab (\\
+\tab\tab (i > 0 \yLuego e.aula[i-1][j] > 0 \yLuego\\
+\tab\tab\tab propExamen( e.estudiantes[e.aula[i][j]].examen,\\
+\tab\tab\tab\tab\tab\tab e.estudiantes[e.aula[i-1][j]].examen ) > 60) \vee\\
+\tab\tab (j > 1 \yLuego e.aula[i][j-2] > 0 \yLuego\\
+\tab\tab\tab propExamen( e.estudiantes[e.aula[i][j]].examen,\\
+\tab\tab\tab\tab\tab\tab e.estudiantes[e.aula[i][j-2]].examen ) > 60) \vee\\
+\tab\tab (j < |e.aula| - 2 \yLuego e.aula[i][j+2] > 0 \yLuego\\
+\tab\tab\tab propExamen( e.estudiantes[e.aula[i][j]].examen,\\
+\tab\tab\tab\tab\tab\tab e.estudiantes[e.aula[i][j+2]].examen ) > 60) \vee\\
+\tab\tab (eqExamen( e,\ e.estudiantes[e.aula[i][j]].examen ) > 25)\\
+\tab )\\
+}\\

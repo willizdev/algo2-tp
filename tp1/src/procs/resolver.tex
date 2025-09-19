@@ -1,0 +1,20 @@
+\begin{proc}{resolver}{\Inout e: \Tipo{EdR}, \Inout examenes: \seq{\Tipo{Examen}},\In estudiante: \Z, \In ejercicio: \Z, \In respuesta: \Z}
+{}
+\requiere{ E0 = e }
+\requiere{X0 = examenes}
+\requiere{estudiante \in claves(e.estudiantes) \land\\
+    \tab e.estudiantes[estudiante].entregado = False \land\\
+    \tab 0 \le ejercicio < |e.solucion| \land 0 \le respuesta < 10 \land\\
+    \tab e.estudiantes[estudiante].examen[ejercicio] = -1}
+\requiere{|examenes| > 0 \land examenes[|examenes| - 1] = e.estudiantes[estudiante].examen \land\\
+    \tab \paraTodo{i}{\Z}{(0 \le i < |examenes[0]| \implicaLuego examenes[0][k] = -1)} \land\\
+    \tab \paraTodo{i}{\Z}{0 \le i < |examenes| - 1 \implicaLuego |examenes[i]| = |examenes[i + 1]|} \land\\
+    \tab \paraTodo{i}{\Z}{0 \le i < |examenes| \implicaLuego\\
+    \tab \paraTodo{j}{\Z}{0 \le j < |examenes[i]| \implicaLuego -1 \le examenes[i][j] < 10}} \land\\
+    \tab \paraTodo{i}{\Z}{0 \le i < |examenes| - 1 \implicaLuego diffExUnitario(examenes[i], examenes[i + 1])}}
+\asegura{ igualAula(e.aula, E0.aula) }
+\asegura{ igualSolucion(e.solucion, E0.solucion) }
+\asegura{ e.estudiantes = setKey(E0.estudiantes, estudiante,\\
+\tab setAt(E0.estudiantes[estudiante].examen, ejercicio, respuesta)) }
+\asegura{ examenes = concat(X0, e.estudiantes[estudiante].examen)}
+\end{proc}\\

@@ -1,0 +1,18 @@
+\pred{sePuedeCopiar}{e:\Tipo{EdR}, LU:\Z}{\\
+\tab \existe{i,j}{\Z}{\\
+\tab\tab 0 \le i < |e.aula| \yLuego 0 \le j < |e.aula| - 2 \yLuego\\
+\tab\tab \existe{k}{\Z}{k \in claves(e.estudiantes)} \yLuego\\
+\tab\tab (e.aula[i][j] = k \yLuego e.aula[i][j+2] = LU) \oLuego\\
+\tab\tab (e.aula[i][j] = LU \yLuego e.aula[i][j+2] = k) \yLuego\\
+\tab\tab \existe{n}{\Z}{\\
+\tab\tab\tab 0 \le n < |e.solucion| \yLuego\\
+\tab\tab\tab e.estudiantes[LU].examen[n] = -1 \yLuego e.estudiantes[k].examen[n] \ne -1\\
+\tab\tab }\\
+\tab } \oLuego\\[0.25em]
+\tab \paraTodo{h,l}{\Z}{\\
+\tab\tab 0 \le h,l < |e.aula| \yLuego h \ne 0 \implicaLuego\\
+\tab\tab \existe{p}{\Z}{p \in claves(e.estudiantes)} \yLuego\\
+\tab\tab e.aula[h][l] = LU \yLuego e.aula[h-1][l] = p \yLuego\\
+\tab\tab \existe{n}{\Z}{ 0 \le n < |e.solucion| \yLuego e.estudiantes[LU].examen[n] = -1 \yLuego e.estudiantes[p].examen[n] \ne -1 }\\
+\tab }\\
+}

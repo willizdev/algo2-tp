@@ -1,0 +1,20 @@
+\pred{igualAula}{a1: \Tipo{Aula}, a2: \Tipo{Aula}}{\\
+\tab |a1| = |a2| \land \paraTodo{i, j}{\Z}{0 \leq i, j < |a1| \implicaLuego a1[i][j] = a2[i][j]}
+\\}
+
+\pred{igualSolución}{s1: \Tipo{Examen}, s2: \Tipo{Examen}}{\\
+\tab |s1| = |s2| \land \paraTodo{k}{\Z}{0 \leq k < |s1| \implicaLuego s1[k] = s2[k]}
+\\}
+
+\pred{igualEstudiantes}{e1: \dict{\Z}{\Tipo{Estudiante}}, e2: \dict{\Z}{\Tipo{Estudiante}}}{\\
+\tab \paraTodo{k}{\Z}{k\ en\ claves(e1) \sii\ k\ en\ claves(e2)} \land\\
+\tab \paraTodo{k}{\Z}{k\ en\ claves(e1) \yLuego igualEstudiante(e1[k], e2[k])}
+\\}
+
+\pred{igualEstudiante}{e1: \Tipo{Estudiante}, e2: \Tipo{Estudiante}}{\\
+\tab igualExamen(e1.examen, e2.examen) \land e1.entregado = e2.entregado
+\\}
+
+\pred{igualExamen}{e1: \Tipo{Examen}, e2: \Tipo{Examen}}{\\
+\tab |e1| = |e2| \land \paraTodo{k}{\Z}{0 \leq k < |e1| \yLuego e1[k] = e2[k]}
+\\}\\

@@ -1,7 +1,7 @@
 \documentclass[11pt,a4paper]{article}
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
-\usepackage[left=2.5cm,top=3cm,right=2.5cm,bottom=3cm,bindingoffset=0.5cm]{geometry}
+\usepackage[left=1cm,top=1.5cm,right=2.5cm,bottom=1.5cm]{geometry}
 \usepackage{AEDLogica, AEDEspecificacion, AEDTADs}
 \usepackage{caratula}
 
@@ -10,14 +10,15 @@
 \titulo{Trabajo práctico}
 \subtitulo{Especificación de TADs}
 
-\fecha{\today}
+\fecha{19 de Septiembre, 2025}
 
 \materia{Algoritmos y Estructuras de Datos}
-\grupo{Nombre del grupo} 
+\grupo{ArrayIndexOutOfBoundsException} 
 
 \integrante{Hsu, Valentina}{1240/24}{valentina.hsu@gmail.com}
-\integrante{Li, Eric}{1094/24}{ericlee05@hotmail.com}
+\integrante{Lee, Eric}{1094/24}{ericlee05@hotmail.com}
 \integrante{Zheng, William}{943/25}{williamzheng73@gmail.com}
+\integrante{D'Agostino, Javier}{794/23}{javdcdev@gmail.com}
 
 \graphicspath{{../static/}}
 \newcommand{\Tipo}[1]{\mathsf{#1}}
@@ -28,57 +29,38 @@
 \begin{document}
 \maketitle
 
-\section*{Resolución del enunciado}
+\section*{Resolucion del enunciado}
+
+\noindent\texttt{Aula ES }$\seq{\seq{\Z}}$\\
+\noindent\texttt{Examen ES }$\seq{\Z}$\\
+\noindent\texttt{Estudiante ES }$\struct{examen: \Tipo{Examen},\ entregado: \bool}$\\
 
 \begin{tad}{EdR}
 
-% observadores
-% \obs{aula}{\seq{\seq{\Z}}}\\
-% \obs{solucion}{\seq{\Z}}\\
-% \obs{estudiantes}{\dict{LU: {\Z}, examen: \seq{\Z}}}\\
+\obs{aula}{\Tipo{Aula}}\\
+\obs{solucion}{\Tipo{Examen}}\\
+\obs{estudiantes}{\dict{\Z}{\Tipo{Estudiante}}}\\
 
-% \begin{proc}{EdR}
-% {
-%     \In aula: \seq{\seq{\Z}},
-%     \In solucion: \seq{\seq{\Z}},
-%     \In estudiantes: \Z
-% }{
-% \Tipo{EjemploDeTAD}
-% }
-%     \requiere{predicadoUnilinea(caracteres)}
-%     \asegura{res.secuenciaDeCaracteres = caracteres}
-%     \aseguraLargo{ \norm{res.conjuntoDeTuplas} = \norm{secuenciaDeNombres} \land \\predicadoMultilinea(secuenciaDeNombres, res.conjuntoDeTuplas) }
-% \end{proc}
+\input{auxs/eqExamen.tex}
+\input{auxs/maxEstudiantes.tex}
+\input{auxs/notaExamen.tex}
+\input{auxs/propExamen.tex}
+
+\input{preds/diffExUnitario.tex}
+\input{preds/enRango.tex}
+\input{preds/esSospechoso.tex}
+\input{preds/igualObs.tex}
+\input{preds/sePuedeCopiar.tex}
+
+\input{procs/crearEdR.tex}
+\input{procs/igualdad.tex}
+\input{procs/copiarse.tex}
+\input{procs/consultarDarkWeb.tex}
+\input{procs/resolver.tex}
+\input{procs/entregar.tex}
+\input{procs/chequearCopias.tex}
+\input{procs/corregir.tex}
 
 \end{tad}
 
 \end{document}
-
-% \obs{secuenciaDeCaracteres}{\seq{\cha}}
-% \obs{conjuntoDeTuplas}{\conj{\tupla{nombre: \seq{\cha}, apellido: \seq{\cha}}}}
-
-
-% \begin{proc}{crearTAD}
-% {
-% \In caracteres: \seq{\cha},
-% \In secuenciaDeNombres: \seq{\tupla{nombre: \seq{\cha}, apellido: \seq{\cha}}}
-% }{
-% \Tipo{EjemploDeTAD}
-% }
-%     \requiere{predicadoUnilinea(caracteres)}
-%     \asegura{res.secuenciaDeCaracteres = caracteres}
-%     \aseguraLargo{ \norm{res.conjuntoDeTuplas} = \norm{secuenciaDeNombres} \land \\predicadoMultilinea(secuenciaDeNombres, res.conjuntoDeTuplas) }
-% \end{proc}
-
-% \predLargo{predicadoMultilinea}{s: \seq{\cha}, conjunto: \conj{\tupla{\seq{\cha}, \seq{\cha}}}}{
-%     \paraTodo{i}{\Z}{0 \leq i < \norm{s} 
-%     \implicaLuego s[i] \in c}
-% }
-
-% \pred{predicadoUnilínea}{s: \seq{\cha}}{
-%     \norm{s} > 0
-% }
-
-% \aux{unAuxiliar}{k: \Z,l: \Z}{\Z}{\norm{k-l}}
-
-% \end{tad}
